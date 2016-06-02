@@ -72,9 +72,9 @@ public class Rule {
                 }
                 ProxyServer.getInstance().broadcast(new TextComponent(  color( alert )));
             } else if ( action.equals( "scommand" ) ) {
-                player.chat( actions.get( action )[0] );
+                player.chat( actions.get( action )[0].replace( "{player}", player.getDisplayName() ) );
             } else if ( action.equals( "pcommand" ) ) {
-                ProxyServer.getInstance().getPluginManager().dispatchCommand( player, actions.get( action )[0] );
+                ProxyServer.getInstance().getPluginManager().dispatchCommand( player, actions.get( action )[0].replace( "{player}", player.getDisplayName() ) );
             } else if( action.equals( "ccommand" )){
                 ProxyServer.getInstance().getPluginManager().dispatchCommand( ProxyServer.getInstance().getConsole(), actions.get( action )[0].replace( "{player}", player.getName() ) );
             } else if ( action.equals( "remove" ) ) {

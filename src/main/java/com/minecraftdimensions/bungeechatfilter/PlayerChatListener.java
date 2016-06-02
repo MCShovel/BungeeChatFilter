@@ -33,7 +33,6 @@ public class PlayerChatListener implements Listener {
                     }else{
                         Main.ANTIREPEAT.put( player.getName(), e.getMessage() );
                     }
-
                 }
                 Main.ANTISPAM.put( player.getName(),System.currentTimeMillis());
                 for ( Rule r : Main.RULES ) {
