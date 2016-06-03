@@ -29,9 +29,11 @@ public class Rule {
         this.actions = actions;
         if(permission!=null && permission.startsWith( "!" )){
             permission = permission.substring( 1,permission.length() );
-            needsPerm = true;
+            needsPerm = false;
+        } else {
+        	this.permission = permission;
+        	needsPerm = true;
         }
-        this.permission = permission;
     }
 
     public Pattern getRegex() {
