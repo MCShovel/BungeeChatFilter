@@ -28,11 +28,11 @@ public class Rule {
         }
         this.actions = actions;
         if(permission!=null && permission.startsWith( "!" )){
-            permission = permission.substring( 1,permission.length() );
+            this.permission = permission.substring( 1, permission.length() );
             needsPerm = false;
         } else {
         	this.permission = permission;
-        	needsPerm = true;
+        	needsPerm = (permission != null);
         }
     }
 
@@ -115,7 +115,7 @@ public class Rule {
     }
 
     public boolean hasPermission() {
-        return permission != null;
+        return permission != null && permission != "";
     }
 
     public boolean needsPermission(){
