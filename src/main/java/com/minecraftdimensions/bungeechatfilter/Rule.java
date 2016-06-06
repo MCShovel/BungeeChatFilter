@@ -24,7 +24,7 @@ public class Rule {
         if ( ignores == null ) {
             ignore = null;
         }    else{
-        this.ignore = Pattern.compile( ignores );
+        this.ignore = Pattern.compile( ignores, Pattern.CASE_INSENSITIVE );
         }
         this.actions = actions;
         if(permission!=null && permission.startsWith( "!" )){
