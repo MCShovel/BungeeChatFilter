@@ -6,3 +6,9 @@ target/
 bin/
 .settings/
 .git/
+
+# intellij
+*.iml
+*.ipr
+*.iws
+.idea/
