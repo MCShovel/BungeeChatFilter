@@ -20,7 +20,7 @@ public class Rule {
     boolean needsPerm;
 
     public Rule( String regex, HashMap<String, String[]> actions, String permission, String ignores ) {
-        this.regex = Pattern.compile( regex );
+        this.regex = Pattern.compile( regex, Pattern.CASE_INSENSITIVE );
         if ( ignores == null ) {
             ignore = null;
         }    else{

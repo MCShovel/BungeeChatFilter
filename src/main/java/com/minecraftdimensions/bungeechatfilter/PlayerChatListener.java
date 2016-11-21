@@ -41,16 +41,14 @@ public class PlayerChatListener implements Listener {
 			}
 			Main.ANTISPAM.put( player.getName(),System.currentTimeMillis());
 			for ( Rule r : Main.RULES ) {
+				if (r.hasPermission() && !r.needsPerm && player.hasPermission( r.getPermission() )) {
+					continue;
+				}
 				if ( r.doesMessageContainRegex( e.getMessage() ) ) {
-					if(r.hasPermission()) {
-						if(r.needsPerm && !player.hasPermission( r.getPermission() )) {
-							e.setCancelled( true );
-							player.sendMessage( new TextComponent( ChatColor.RED + "You do not have access to that command." ) );
-							return;
-						}
-						else if (!r.needsPerm && player.hasPermission( r.getPermission() )) {
-							return;
-						}
+					if(r.hasPermission() && r.needsPerm && !player.hasPermission( r.getPermission() )) {
+						e.setCancelled( true );
+						player.sendMessage( new TextComponent( ChatColor.RED + "You do not have access to that command." ) );
+						return;
 					}
 					r.performActions( e, player );
 				}
@@ -95,7 +93,7 @@ public class PlayerChatListener implements Listener {
     }
 
     public boolean isMonitoredCommand(String command){
-        return  Main.COMLIST.contains( command.substring( 1, command.length() ).split( " " )[0]);
+        return  Main.COMLIST.contains(command.substring(1).split(" ")[0].toLowerCase());
     }
 
 }
